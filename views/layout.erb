@@ -1,0 +1,32 @@
+<?xml encoding="UTF-8"?>
+<html>
+  <head>
+     <title>Dínónevelde</title>
+     <link rel="stylesheet" href="/stilus.css" type="text/css"/>
+     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/> 
+  </head>
+       
+  <body> 
+       <tr><img src="/part1.jpg" width='100%'></img></tr>
+       <tr><ul id="nav">
+             <li><a href=/>főoldal</a></li> <% if session[:logged_in]%>
+                                                <%="<li><a href=/user/alluser>felhasználók</a>    </li>
+                                                    <li><a href=/user/ulap?user=#{session[:logged_in]}>saját oldal</a></li>
+                                                    <li><a href=/logout>kijelentkezés</a></li>"%>
+                                             <%else%>
+                                                <%="<li><a href=/user/reg>regisztráció</a>    </li>"%>
+                                             <%end%>        
+                                                   </ul></tr>
+       
+            <% if notice = session.delete(:notice) %>
+             <p class="notice"><%= notice %></p>
+                             <% end %>
+            <% if error = session.delete(:error) %>
+             <p class="error"><%= error %></p>
+            <% end %>
+      
+       <tr> <%= yield %> </tr>
+     
+     
+  </body>
+</html>

@@ -1,0 +1,10 @@
+<%
+html="<h1>Felhasználók</h1><p><ul>"
+User.each{|u|  html<<"<li><a href=/user/ulap?user=#{u.login}>#{u.login}</a>"; if u.name!=""
+                                                                          html<<" - #{u.name}</li>"
+                                                                              else  html<<"</li>"
+                                                                             end}
+html<<"</ul>"
+%>
+
+<%=html%>

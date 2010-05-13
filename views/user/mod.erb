@@ -1,0 +1,25 @@
+<%
+user = User[:login => session[:logged_in]]
+session[:reghiba]=["",params[:name],params[:email]]
+
+if Digest::SHA1.hexdigest(params[:pass])==Digest::SHA1.hexdigest(params[:passu])
+   session[:reghiba]=false
+else
+   session[:reghiba][0]="Meg kell, hogy egyezzen a jelszóval!"
+   session[:error]="Valami hiba történt!"
+   redirect "/user/umod"
+end
+if params[:pass]!=""
+  user.password_hash =Digest::SHA1.hexdigest(params[:pass])
+end
+if params[:name]!=""
+user.name =params[:name]
+end
+if params[:email]!=""
+user.email=params[:email]
+end
+user.save
+ session[:notice]="A módosításokat sikeresen elmentettük."
+ redirect "/user/ulap?user=#{session[:logged_in]}"
+%>
+

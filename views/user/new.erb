@@ -1,0 +1,31 @@
+<%
+user = User.new
+session[:reghiba]=["","",params[:uname],params[:name],params[:email]]
+
+if params[:uname].length >= 4 and Digest::SHA1.hexdigest(params[:pass])==Digest::SHA1.hexdigest(params[:passu]) and not(usr=User[:login => params[:uname]])
+session[:reghiba]=false
+else
+    if params[:uname].length <= 4 
+      session[:reghiba][0]="A felhasználónevednek legalább 4 hosszúnak kell lennie!"
+    end
+    if usr=User[:login => params[:uname]]
+      session[:reghiba][0]="Az általad választott felhasználónév már foglalt!"
+    end
+    if Digest::SHA1.hexdigest(params[:pass])!=Digest::SHA1.hexdigest(params[:passu])
+      session[:reghiba][1]="Meg kell, hogy egyezzen a jelszóval!"
+    end
+ session[:error]="Valami hiba történt!"
+ redirect "/user/reg"
+end
+user.login = params[:uname]
+user.password_hash =Digest::SHA1.hexdigest(params[:pass])
+user.name =params[:name]
+user.email=params[:email]
+user.regdate=Time.now
+user.lastlogin=Time.now
+user.save
+session[:logged_in]=params[:uname]
+session[:notice]="Sikereseb regisztráltad magad."
+redirect "/user/ulap?user=#{session[:logged_in]}"
+%>
+

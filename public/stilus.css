@@ -1,0 +1,38 @@
+@charset "utf-8";
+html{
+	background: #208a2a;
+     }
+
+.kozepre {
+	text-align: center;
+        }
+
+a:hover{  color: #fff; 
+         text-decoration: line-through ;
+        }
+
+a:visited{  color: #fff;
+          }
+
+a:link{ color: #fff;
+       }
+
+#nav {list-style-type: none;
+  margin: 0;
+  padding: 0.25em 0.5em;
+  background-color: #155923;
+}
+
+#nav li {
+  display: inline;
+  margin:  0;
+  padding: 0 1em;
+}
+
+.notice {
+  color: #243;
+}
+
+.error {
+  color: #900;
+}

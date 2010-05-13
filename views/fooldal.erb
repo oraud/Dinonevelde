@@ -1,0 +1,36 @@
+<% form=%(
+<form action="/login" method="POST">
+  <fieldset>
+    <legend>Bejelentkezés</legend>
+    <p>
+      <label for="user">Felhasználónév:</label>
+      <input type="text" id="user" name="user" />
+    </p>
+    <p>
+      <label for="pass">Jelszó:</label>
+      <input type="password" id="pass" name="pass" />
+    </p>
+    <p><input type="submit" value="Mehet" /></p>
+  </fieldset>
+</form>
+<p>
+) %>
+
+
+
+<%                
+      if session[:logged_in]
+      html="<h1>Főoldal</h1><p>
+            <h2>Hello #{session[:logged_in]}!</h2>
+           
+            <p><a href=/logout>kijelentkezek</a>
+            "
+            
+
+      else html="<h1>Jelentkezz Be!</h1>"<<form
+
+      end 
+   %>
+
+<%=html%>
+

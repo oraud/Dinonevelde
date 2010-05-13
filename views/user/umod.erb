@@ -1,0 +1,30 @@
+<h2>Regisztráció módosítása</h2>
+<p>
+
+<%
+if !(session[:reghiba]) 
+session[:reghiba]=["","",""]
+end %>
+
+
+
+<form action="/user/mod" method="Post">
+<fieldset>
+
+<label for="pass">Írd be a jelszavad!</label>
+      <p><input type="password" id="pass" name="pass" /><p>
+
+<label for="passu">Írd be a jelszavad újra!</label>
+      <p class="error"><input type="password" id="passu" name="passu" /> <%=session[:reghiba][0]%> <p>
+
+<label for="name">Írd be a teljes neved!</label>
+     <p><input type="text" id="name" name="name" value=<%=session[:reghiba][1]%>><p>
+
+<label for="email">Írd be az e-mail címed!</label>
+     <p><input type="text" id="email" name="email" value=<%=session[:reghiba][2]%>><p>
+
+
+<p><input type="submit" value="Mehet" /></p>
+
+</fieldset>
+</form>
