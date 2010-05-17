@@ -7,14 +7,15 @@
   </head>
        
   <body> 
-       <tr><img src="/part1.jpg" width='100%'></img></tr>
+       <tr><img src="/dinos.jpg" width='100%'></img></tr>
        <tr><ul id="nav">
              <li><a href=/>főoldal</a></li> <% if session[:logged_in]%>
-                                                <%="<li><a href=/user/alluser>felhasználók</a>    </li>
+                                                <%="<li><a href=/user/alluser>felhasználók</a></li>
                                                     <li><a href=/user/ulap?user=#{session[:logged_in]}>saját oldal</a></li>
+                                                    <li><a href=/dino/alldinos>dínók</a></li>
                                                     <li><a href=/logout>kijelentkezés</a></li>"%>
                                              <%else%>
-                                                <%="<li><a href=/user/reg>regisztráció</a>    </li>"%>
+                                                <%="<li><a href=/user/reg>regisztráció</a></li>"%>
                                              <%end%>        
                                                    </ul></tr>
        

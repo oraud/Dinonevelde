@@ -21,8 +21,8 @@ user.login = params[:uname]
 user.password_hash =Digest::SHA1.hexdigest(params[:pass])
 user.name =params[:name]
 user.email=params[:email]
-user.regdate=Time.now
-user.lastlogin=Time.now
+user.regdate = "#{Time.now.year}-#{Time.now.month}-#{Time.now.day}"
+user.lastlogin = "#{Time.now.year}-#{Time.now.month}-#{Time.now.day}"
 user.save
 session[:logged_in]=params[:uname]
 session[:notice]="Sikereseb regisztráltad magad."

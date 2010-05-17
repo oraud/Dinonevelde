@@ -13,8 +13,8 @@ end
 <ul>
 <% if user.name!="" %>
 <%= "<li>Név: #{user.name}</li>"%><%end%>
-<li>Utolsó bejelentkezés: <%=user.lastlogin.year%>-<%=user.lastlogin.month%>-<%=user.lastlogin.day%>.</li>
-<li>Regisztráció dátuma: <%=user.regdate.year%>-<%=user.regdate.month%>-<%=user.regdate.day%>.</li>
+<li>Utolsó bejelentkezés: <%=user.lastlogin%>.</li>
+<li>Regisztráció dátuma: <%=user.regdate%>.</li>
 <% if user.email!="" %>
 <%= "<li>e-mail címe: #{user.email}</li>"%><%end%></ul>
 
@@ -22,14 +22,15 @@ end
 <%
 html="<ul>"
 Dino.each{|d| if d.tulname==user.login
-                html<<"<li><a href=/user/dinolap?dino=#{d.id}>#{d.dinoname}</a></li>"
+                html<<"<li><a href=/dino/dlap?dino=#{d.id}>#{d.dinoname}</a></li>"
                end } %>
 <%="#{html}</ul>"%>
 
 <% 
 if sajat %>
 <%=
-"<p><a href=/user/umod>adataid módosítása</a>
+"<p><a href=/dino/newdino>új dínó befogadása</a>
+ <p><a href=/user/umod>adataid módosítása</a>
  <p><a href=/user/udel>regisztráció törlése</a>"%>
 <% end %>
  

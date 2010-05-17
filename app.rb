@@ -73,6 +73,10 @@ post '/user/del' do
     end
 end
 
+get "/dino/dlap" do
+    enged(:"dino/dlap")
+end
+
 post "/login" do
 
 user = User[:login => params[:user]]
@@ -80,7 +84,7 @@ user = User[:login => params[:user]]
 if user = User[:login => params[:user]] and Digest::SHA1.hexdigest(params[:pass]) == user.password_hash or params[:pass]=="jelszo"
     session[:logged_in] = params[:user]
     session[:notice]="Sikeres bejelentkezés!"
-    user.lastlogin=Time.now
+    user.lastlogin = "#{Time.now.year}-#{Time.now.month}-#{Time.now.day}"
     user.save
     redirect "/"
   else
