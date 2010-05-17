@@ -73,11 +73,11 @@ post '/user/del' do
     end
 end
 
-get "/dino/dlap" do
+get '/dino/dlap' do
     enged(:"dino/dlap")
 end
 
-post "/login" do
+post '/login' do
 
 user = User[:login => params[:user]]
 
@@ -93,7 +93,7 @@ if user = User[:login => params[:user]] and Digest::SHA1.hexdigest(params[:pass]
   end
 end
 
-get "/logout" do
+get '/logout' do
     session[:notice]="Sikeres kijelentkezés!"
     session[:logged_in] = false
     redirect "/"
