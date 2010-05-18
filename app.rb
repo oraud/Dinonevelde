@@ -40,6 +40,10 @@ post '/user/new' do
      erb :"user/new"
 end
 
+get '/user/new' do
+     erb :"user/new"
+end
+
 get '/user/ulap' do
     enged(:"user/ulap")
 end
@@ -57,6 +61,10 @@ post '/user/mod' do
     enged(:"user/mod")
 end
 
+get '/user/mod' do
+    enged(:"user/mod")
+end
+
 get '/user/udel' do
     enged(:"user/udel")
 end
@@ -71,6 +79,10 @@ post '/user/del' do
     else
       redirect "/user/ulap?user=#{session[:logged_in]}"
     end
+end
+
+get '/user/del' do
+redirect "/"
 end
 
 get '/dino/dlap' do
@@ -91,6 +103,10 @@ if user = User[:login => params[:user]] and Digest::SHA1.hexdigest(params[:pass]
     session[:error]="Hibás felhasználónév, vagy jelszó!"
     redirect "/"
   end
+end
+
+get '/login' do
+redirect "/"
 end
 
 get '/logout' do
