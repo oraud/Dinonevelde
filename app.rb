@@ -95,10 +95,12 @@ get '/dino/act' do
     dino=Dino[:id => params[:id]] 
     if params[:action]=="etel" and dino.tulname==session[:logged_in]
     dino.lasteat=Time.now
+    dino.save
     session[:notice]="Sikeresen megetetted a dínódat."
     end
     if params[:action]=="jatek"
     dino.lastplay=Time.now
+    dino.save
     session[:notice]="#{dino.dinoname} nagyon örül, hogy játszottatok."
     end
 redirect "/dino/dlap?dino=#{params[:id]}"
