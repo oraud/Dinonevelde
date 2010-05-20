@@ -65,6 +65,9 @@ end
 
 post '/user/del' do
     if session[:logged_in] and params[:del]=="igen"
+      Dino.each{|d|   if d.tulname==session[:logged_in]
+                      d.delete
+                      end}
       user = User[:login => session[:logged_in]]
       user.delete
       session[:logged_in]=false
