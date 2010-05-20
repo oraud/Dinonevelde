@@ -1,0 +1,34 @@
+<h2>Új dínó befogadása</h2>
+<p>
+
+<% if !(session[:reghiba])
+session[:reghiba]=["","","velo"]
+end%>
+
+
+<form action="/dino/new" method="post">
+<fieldset>
+<label for="dname">Mi legyen a dínód neve?</label>
+    <p class="error"><input type="text" id="dname" name="dname" value=<%=session[:reghiba][1]%>> <%=session[:reghiba][0]%> <p> 
+
+<label>Válaszd ki a dínód tipusát!</label>
+     <p><img src="/velo.jpg" width='17%'></img><input type="radio" name="dtipe" value="velo" 
+               <%if session[:reghiba][2]=="velo"%><%="checked"%><%end%>>
+
+     <img src="/tric.jpg" width='17%'></img><input type="radio" name="dtipe" value="tric"
+               <%if session[:reghiba][2]=="tric"%><%="checked"%><%end%>>
+
+     <img src="/trex.jpg" width='17%'></img><input type="radio" name="dtipe" value="trex"
+               <%if session[:reghiba][2]=="trex"%><%="checked"%><%end%>>
+
+     <img src="/vulc.jpg" width='17%'></img><input type="radio" name="dtipe" value="vulc"
+               <%if session[:reghiba][2]=="vulc"%><%="checked"%><%end%>>
+
+     <img src="/stego.jpg" width='17%'></img><input type="radio" name="dtipe" value="stego"
+               <%if session[:reghiba][2]=="stego"%><%="checked"%><%end%>>
+
+
+<p><input type="submit" value="Mehet" />
+
+</fieldset>
+</form>

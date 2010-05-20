@@ -40,9 +40,6 @@ post '/user/new' do
      erb :"user/new"
 end
 
-get '/user/new' do
-     erb :"user/new"
-end
 
 get '/user/ulap' do
     enged(:"user/ulap")
@@ -61,9 +58,6 @@ post '/user/mod' do
     enged(:"user/mod")
 end
 
-get '/user/mod' do
-    enged(:"user/mod")
-end
 
 get '/user/udel' do
     enged(:"user/udel")
@@ -81,13 +75,36 @@ post '/user/del' do
     end
 end
 
-get '/user/del' do
-redirect "/"
-end
 
 get '/dino/dlap' do
     enged(:"dino/dlap")
 end
+
+get '/dino/alldinos' do
+    enged(:"dino/alldinos")
+end
+
+get '/dino/newdino' do
+    enged(:"dino/newdino")
+end
+
+get '/dino/act' do
+    dino=Dino[:id => params[:id]] 
+    if params[:action]=="etel" and dino.tulname==session[:logged_in]
+    dino.lasteat=Time.now
+    session[:notice]="Sikeresen megetetted a dínódat."
+    end
+    if params[:action]=="jatek"
+    dino.lastplay=Time.now
+    session[:notice]="#{dino.dinoname} nagyon örül, hogy játszottatok."
+    end
+redirect "/dino/dlap?dino=#{params[:id]}"
+end
+
+post '/dino/new' do
+    enged(:"dino/new")
+end
+
 
 post '/login' do
 
@@ -105,12 +122,10 @@ if user = User[:login => params[:user]] and Digest::SHA1.hexdigest(params[:pass]
   end
 end
 
-get '/login' do
-redirect "/"
-end
 
 get '/logout' do
     session[:notice]="Sikeres kijelentkezés!"
     session[:logged_in] = false
+    session[:reghiba]=false
     redirect "/"
 end

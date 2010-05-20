@@ -29,6 +29,14 @@ a:link{ color: #fff;
   padding: 0 1em;
 }
 
+.beh{
+padding: 0  3em;
+}
+
+.beh2{
+padding: 0  2em;
+}
+
 .notice {
   color: #243;
 }
@@ -36,3 +44,17 @@ a:link{ color: #fff;
 .error {
   color: #900;
 }
+
+.ok {
+  color: #132;
+}
+
+.koz {
+  color: #660;
+}
+
+.baj {
+  color: #700;
+}
+
+

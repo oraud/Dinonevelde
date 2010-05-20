@@ -20,16 +20,17 @@ end
 
 <h3>Dínói:</h3>
 <%
-html="<ul>"
+html="<table class=beh>"
 Dino.each{|d| if d.tulname==user.login
-                html<<"<li><a href=/dino/dlap?dino=#{d.id}>#{d.dinoname}</a></li>"
+                html<<%(<tr><td width='10%'><img src="/#{d.tipe}.jpg" width='100%'></img></td><td><a href=/dino/dlap?dino=#{d.id}>#{d.dinoname}</a></td></tr>)
                end } %>
-<%="#{html}</ul>"%>
+<%="#{html}</table>"%>
 
 <% 
 if sajat %>
 <%=
-"<p><a href=/dino/newdino>új dínó befogadása</a>
+"<h3>Opciók:</h3>
+ <p><a href=/dino/newdino>új dínó befogadása</a>
  <p><a href=/user/umod>adataid módosítása</a>
  <p><a href=/user/udel>regisztráció törlése</a>"%>
 <% end %>

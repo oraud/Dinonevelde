@@ -6,7 +6,7 @@
      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/> 
   </head>
        
-  <body> 
+  <body> <table>
        <tr><img src="/dinos.jpg" width='100%'></img></tr>
        <tr><ul id="nav">
              <li><a href=/>főoldal</a></li> <% if session[:logged_in]%>
@@ -20,14 +20,14 @@
                                                    </ul></tr>
        
             <% if notice = session.delete(:notice) %>
-             <p class="notice"><%= notice %></p>
+             <p  class="notice"><%= notice %></p>
                              <% end %>
             <% if error = session.delete(:error) %>
-             <p class="error"><%= error %></p>
+             <p  class="error"><%= error %></p>
             <% end %>
       
-       <tr> <%= yield %> </tr>
+       <tr><td class=beh2><%= yield %> </td></tr>
      
      
-  </body>
+  </table></body>
 </html>

@@ -1,0 +1,22 @@
+<%
+dino = Dino.new
+session[:reghiba]=["",params[:dname],params[:dtipe]]
+
+if params[:dname].length >= 3 
+session[:reghiba]=false
+else
+    session[:reghiba][0]="A dínód nevének legalább 3 hosszúnak kell lennie!"
+    session[:error]="Valami hiba történt!"
+ redirect "/dino/newdino"
+end
+dino.dinoname = params[:dname]
+dino.tulname = session[:logged_in]
+dino.tipe=params[:dtipe]
+dino.birthdate = Time.now
+dino.lasteat = Time.now
+dino.lastplay =Time.now
+dino.save
+session[:notice]="Gratulálok, új kiskedvenced van!"
+redirect "/dino/dlap?dino=#{dino.id}"
+%>
+

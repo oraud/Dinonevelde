@@ -1,0 +1,13 @@
+<%
+html1="<h1>Dínók</h1><p><h2>Saját dínóid:</h2><table class=beh>"
+html2="<h2>Mások dínói:</h2><table class=beh>"
+Dino.each{|d|   if d.tulname==session[:logged_in]
+                  html1<<%(<tr><td width='10%'><img src="/#{d.tipe}.jpg" width='100%'></img></td><td><a href=/dino/dlap?dino=#{d.id}>#{d.dinoname}</a></td></tr>)
+                else
+                  html2<<%(<tr><td width='10%'><img src="/#{d.tipe}.jpg" width='100%'></img></td><td><a href=/dino/dlap?dino=#{d.id}>#{d.dinoname}</a></td></tr>)
+                              end}
+html1<<"</table>"
+html2<<"</table>"
+%>
+
+<%=html1%><%=html2%>

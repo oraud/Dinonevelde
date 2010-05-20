@@ -20,17 +20,22 @@
 
 <%                
       if session[:logged_in]
+         
+         
       html="<h1>Főoldal</h1><p>
             <h2>Hello #{session[:logged_in]}!</h2>
-           
-            <p><a href=/logout>kijelentkezek</a>
-            "
-            
+           Örülünk, hogy viszontlátunk az oldalon! Látogasd meg dínóidat, ők is biztosan nagy örömmel fogadnak!
+            ";
+           html<<"<table class=beh>"
+            Dino.each{|d| if d.tulname==session[:logged_in]
+                html<<%(<tr><td width='20%'><img src="/#{d.tipe}.jpg" width='100%'></img></td><td><a href=/dino/dlap?dino=#{d.id}>#{d.dinoname}</a></td></tr>)
+               end };
+           html<<"</table>"
 
       else html="<h1>Jelentkezz Be!</h1>"<<form
 
       end 
    %>
 
-<%=html%>
+    <table><tr><td width='50%'> <%=html%> </td>  <td width='50%'><a href=/dino/newdino><img src="/tojas.jpg" width='100%'></img></a> </td> </tr></table>
 

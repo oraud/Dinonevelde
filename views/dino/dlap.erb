@@ -1,5 +1,81 @@
 <%
 dino=Dino[:id => params[:dino]]
+utev=Time.now-dino.lasteat
+utjat=Time.now-dino.lastplay
+
+if utev<=259200
+    ehseg="<i class=ok>Jóllakott</i>"
+ else if utev<=864000
+       ehseg="<i class=koz>Elvan</i>"
+      else
+       ehseg="<i class=baj>Éhes</i>"
+      end
+  end
+if utjat<=172800
+    kedv="<i class=ok>Jókedvű</i>"
+ else if utjat<=604800
+       kedv="<i class=koz>Elvan</i>"
+      else
+       kedv="<i class=baj>Unatkozik</i>"
+      end
+  end
+
+etel1="csirkecombot"
+etel2="salátát"
+etel3="kacsapecsenyét"
+etel4="gyümölcsöt"
+
+if dino.tipe=="trex"
+  tipus="Tyrannosaurus Rex, Kréta-kori ragadozó"
+  etela=etel1
+  etelb=etel3
+end
+if dino.tipe=="stego"
+  tipus="Stegosaurus, Kréta-kori növényevő"
+  etela=etel2
+  etelb=etel4
+end
+if dino.tipe=="tric"
+  tipus="Triceratops, Kréta-kori növényevő"
+  etela=etel2
+  etelb=etel4
+end
+if dino.tipe=="velo"
+  tipus="Velociraptor, Kréta-kori ragadozó"
+  etela=etel1
+  etelb=etel3
+end
+if dino.tipe=="vulc"
+  tipus="Vulcanodon, Kréta-kori növényevő"
+  etela=etel2
+  etelb=etel4
+end
+
 %>
 
+
+
 <h1><%=dino.dinoname%> oldala</h1>
+<table>
+<tr><td width='40%'><img src="/<%=dino.tipe%>.jpg" width='100%'></img></td>
+      <td><ul><li>Gazdája neve: <%="<a href=/user/ulap?user=#{dino.tulname}>#{dino.tulname}</a>"%></li>
+              <li>A dínó tipusa: <i><%=tipus%></i></li>
+              <li>Éhség: <%=ehseg%></li>
+              <li>Hangulat: <%=kedv%></li>
+              <li><form action="/dino/act" method="get">
+                 <select name="action">
+	           <%if dino.tulname==session[:logged_in]%>
+                   <%=%(<option value="etel">Adjunk egy kis #{etela} enni.</option>
+	           <option value="etel">Adjunk egy kis #{etelb} enni.</option>)%><%end%>
+	           <option value="jatek">Játsszunk bújócskát.</option>
+	         </select>
+                 <input type="hidden" name="id" value=<%=dino.id%>>
+                 <button type="submit">Mehet</button></form>
+               </li>
+          </ul>
+
+
+
+
+</td></tr></table>
+
