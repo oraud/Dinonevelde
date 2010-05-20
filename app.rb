@@ -36,7 +36,7 @@ get '/user/reg' do
   end
 end
 
-get '/user/new' do
+post '/user/new' do
      erb :"user/new"
 end
 
@@ -54,7 +54,7 @@ get '/user/umod' do
     enged(:"user/umod")
 end
 
-get '/user/mod' do
+post '/user/mod' do
     enged(:"user/mod")
 end
 
@@ -63,7 +63,7 @@ get '/user/udel' do
     enged(:"user/udel")
 end
 
-get '/user/del' do
+post '/user/del' do
     if session[:logged_in] and params[:del]=="igen"
       user = User[:login => session[:logged_in]]
       user.delete
@@ -101,12 +101,12 @@ get '/dino/act' do
 redirect "/dino/dlap?dino=#{params[:id]}"
 end
 
-get '/dino/new' do
+post '/dino/new' do
     enged(:"dino/new")
 end
 
 
-get '/login' do
+post '/login' do
 
 user = User[:login => params[:user]]
 

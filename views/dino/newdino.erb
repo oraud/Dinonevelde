@@ -6,7 +6,7 @@ session[:reghiba]=["","","velo"]
 end%>
 
 
-<form action="/dino/new" method="get">
+<form action="/dino/new" method="post">
 <fieldset>
 <label for="dname">Mi legyen a dínód neve?</label>
     <p class="error"><input type="text" id="dname" name="dname" value=<%=session[:reghiba][1]%>> <%=session[:reghiba][0]%> <p> 
